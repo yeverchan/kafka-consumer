@@ -1,4 +1,4 @@
-package com.example.minikafkaconsumer.adapter;
+package com.example.minikafkaconsumer.service;
 
 import com.example.minikafkaconsumer.config.KafkaProperties;
 import jakarta.annotation.PostConstruct;
