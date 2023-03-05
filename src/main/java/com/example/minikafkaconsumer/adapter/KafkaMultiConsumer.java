@@ -12,12 +12,10 @@ import java.util.concurrent.Executors;
 @Service
 public class KafkaMultiConsumer {
 
-    private final Logger log = LoggerFactory.getLogger(KafkaMultiConsumer.class);
-
-    private final ExecutorService executorService = Executors.newCachedThreadPool();
-
-    private static final String TOPIC = "test_topic";
     private static final int PARTITION_COUNT = 4;
+
+    private final Logger log = LoggerFactory.getLogger(KafkaMultiConsumer.class);
+    private final ExecutorService executorService = Executors.newCachedThreadPool();
 
     private final KafkaProperties kafkaProperties;
 
@@ -31,7 +29,7 @@ public class KafkaMultiConsumer {
         log.info("Thread: {}, Consumer runners initializing...", Thread.currentThread().getName());
 
         for (int i = 0; i < PARTITION_COUNT; i++) {
-            KafkaConsumerRunner runner = new KafkaConsumerRunner(kafkaProperties, TOPIC);
+            KafkaConsumerRunner runner = new KafkaConsumerRunner(kafkaProperties);
 
             executorService.execute(runner);
         }

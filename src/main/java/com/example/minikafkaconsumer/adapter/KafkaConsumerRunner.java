@@ -15,17 +15,14 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class KafkaConsumerRunner implements Runnable {
 
     private final Logger log = LoggerFactory.getLogger(KafkaConsumerRunner.class);
-
     private final AtomicBoolean closed = new AtomicBoolean(false);
 
     private final KafkaProperties properties;
-    private final String topic;
 
     private KafkaConsumer<String, String> kafkaConsumer;
 
-    public KafkaConsumerRunner(KafkaProperties properties, String topic) {
+    public KafkaConsumerRunner(KafkaProperties properties) {
         this.properties = properties;
-        this.topic = topic;
     }
 
     @Override
@@ -34,7 +31,7 @@ public class KafkaConsumerRunner implements Runnable {
         kafkaConsumer = new KafkaConsumer<>(properties.getConsumerProperties());
 
         try {
-            kafkaConsumer.subscribe(Collections.singleton(topic));
+            kafkaConsumer.subscribe(Collections.singleton(properties.getTOPIC()));
 
             while (!closed.get()) {
                 ConsumerRecords<String, String> records = kafkaConsumer.poll(Duration.ofSeconds(3));
