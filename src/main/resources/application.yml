@@ -3,3 +3,4 @@ server:
 
 kafka:
   TOPIC: test_topic
+  PARTITIONS_COUNT: 4

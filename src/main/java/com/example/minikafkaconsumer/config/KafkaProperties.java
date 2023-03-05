@@ -17,6 +17,7 @@ public class KafkaProperties {
     private static final String GROUP_ID = "test_consumer_group";
 
     private String TOPIC;
+    private int PARTITIONS_COUNT;
 
     private final Map<String, Object> consumerProperties;
 
@@ -50,5 +51,13 @@ public class KafkaProperties {
 
     public void setTOPIC(String TOPIC) {
         this.TOPIC = TOPIC;
+    }
+
+    public int getPARTITIONS_COUNT() {
+        return PARTITIONS_COUNT;
+    }
+
+    public void setPARTITIONS_COUNT(int PARTITION_COUNT) {
+        this.PARTITIONS_COUNT = PARTITION_COUNT;
     }
 }
